@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Northwind.Entities.Concrete
+namespace Northwind.Core.Entities.Concrete
 {
     public class User : IEntity
     {

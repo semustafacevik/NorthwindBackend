@@ -1,6 +1,6 @@
 ﻿using Northwind.Business.Abstract;
+using Northwind.Core.Entities.Concrete;
 using Northwind.DataAccess.Abstract;
-using Northwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;

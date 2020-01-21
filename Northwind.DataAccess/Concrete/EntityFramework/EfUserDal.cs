@@ -1,7 +1,7 @@
 ﻿using Northwind.Core.DataAccess.EntityFramework;
+using Northwind.Core.Entities.Concrete;
 using Northwind.DataAccess.Abstract;
 using Northwind.DataAccess.Concrete.EntityFramework.Contexts;
-using Northwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

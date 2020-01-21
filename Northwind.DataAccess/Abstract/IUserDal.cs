@@ -1,5 +1,5 @@
 ﻿using Northwind.Core.DataAccess;
-using Northwind.Entities.Concrete;
+using Northwind.Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
