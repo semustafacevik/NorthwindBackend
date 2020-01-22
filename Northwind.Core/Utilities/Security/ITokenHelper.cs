@@ -7,6 +7,6 @@ namespace Northwind.Core.Utilities.Security
 {
     public interface ITokenHelper
     {
-        AccessToken CreateToken(User user, IList<OperationClaim> operationClaims );
+        AccessToken CreateToken(User user, IList<OperationClaim> operationClaims);
     }
 }
