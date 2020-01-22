@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Northwind.Core.Utilities.Security
+namespace Northwind.Core.Utilities.Security.Tokens
 {
     public interface ITokenHelper
     {

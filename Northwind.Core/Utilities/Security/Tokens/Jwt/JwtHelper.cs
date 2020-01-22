@@ -10,7 +10,7 @@ using Northwind.Core.Entities.Concrete;
 using Northwind.Core.Extensions;
 using Northwind.Core.Utilities.Security.Encryption;
 
-namespace Northwind.Core.Utilities.Security.Jwt
+namespace Northwind.Core.Utilities.Security.Tokens.Jwt
 {
     public class JwtHelper : ITokenHelper
     {

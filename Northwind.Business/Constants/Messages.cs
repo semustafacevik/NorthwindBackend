@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Northwind.Business.Contants
+namespace Northwind.Business.Constants
 {
     public static class Messages
     {

@@ -1,8 +1,8 @@
 ﻿using Northwind.Business.Abstract;
-using Northwind.Business.Contants;
+using Northwind.Business.Constants;
 using Northwind.Core.Entities.Concrete;
 using Northwind.Core.Utilities.Results;
-using Northwind.Core.Utilities.Security;
+using Northwind.Core.Utilities.Security.Tokens;
 using Northwind.Core.Utilities.Security.Hashing;
 using Northwind.Entities.Dtos;
 using System;
@@ -43,10 +43,10 @@ namespace Northwind.Business.Concrete
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessLogin);
         }
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
             User user = new User()
             {
                 Email = userForRegisterDto.Email,
@@ -61,7 +61,7 @@ namespace Northwind.Business.Concrete
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }
 
-        public IResult UserExits(string mail)
+        public IResult UserExists(string mail)
         {
             if (_userService.GetByMail(mail) != null)
             {
