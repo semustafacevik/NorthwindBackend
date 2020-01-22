@@ -15,9 +15,10 @@ namespace Northwind.Business.Contants
         public static string CategoryDeleted = "Kategori başarıyla silindi.";
 
         public static string UserNotFound = "Kullanıcı bulunamadı.";
-        public static string PasswordError = "Şifre hatalı";
-        public static string SuccessLogin = "Giriş başarılı";
-        public static string UserAlreadyExits = "Böyle bir kullanıcı mevcut";
-
+        public static string PasswordError = "Şifre hatalı.";
+        public static string SuccessLogin = "Giriş başarılı.";
+        public static string UserAlreadyExits = "Böyle bir kullanıcı mevcut.";
+        public static string UserRegistered = "Kullanıcı başarıyla kaydedildi.";
+        public static string AccessTokenCreated = "Access token başarıyla oluşturuldu.";
     }
 }

@@ -23,7 +23,10 @@ namespace Northwind.Business.Concrete
         }
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            throw new NotImplementedException();
+            var claims = _userService.GetClaims(user);
+            var accessToken = _tokenHelper.CreateToken(user, claims);
+
+            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
@@ -42,7 +45,20 @@ namespace Northwind.Business.Concrete
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
-            throw new NotImplementedException();
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            User user = new User()
+            {
+                Email = userForRegisterDto.Email,
+                FirstName = userForRegisterDto.FirstName,
+                LastName = userForRegisterDto.LastName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            _userService.Add(user);
+
+            return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }
 
         public IResult UserExits(string mail)
@@ -51,6 +67,7 @@ namespace Northwind.Business.Concrete
             {
                 return new ErrorResult(Messages.UserAlreadyExits);
             }
+            return new SuccessResult();
         }
     }
 }
