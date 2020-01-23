@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
+using Northwind.Core.Utilities.Security.Tokens;
+using Northwind.Core.Utilities.Security.Tokens.Jwt;
 using Northwind.DataAccess.Abstract;
 using Northwind.DataAccess.Concrete.EntityFramework;
 using System;
@@ -21,6 +23,9 @@ namespace Northwind.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
         }
     }
 }
