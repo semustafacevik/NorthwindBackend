@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Northwind.Core.DependecyResolvers;
+using Northwind.Core.Extensions;
 using Northwind.Core.Utilities.Security.Encryption;
 using Northwind.Core.Utilities.Security.Tokens;
 
@@ -49,6 +51,11 @@ namespace Northwind.WebAPI
                     ValidAudience = tokenOptions.Audience,
                     IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                 };
+            });
+
+            services.AddDependencyResolvers(new Core.Utilities.IoC.ICoreModule[]
+            {
+                new CoreModule()
             });
         }
 
