@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
+using Northwind.Core.Utilities.Interceptors.Autofac;
 using Northwind.Core.Utilities.Security.Tokens;
 using Northwind.Core.Utilities.Security.Tokens.Jwt;
 using Northwind.DataAccess.Abstract;
@@ -26,6 +28,13 @@ namespace Northwind.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces().EnableInterfaceInterceptors(new Castle.DynamicProxy.ProxyGenerationOptions()
+            {
+                Selector = new AspectInterceptorSelector()
+            }).SingleInstance();
         }
     }
 }
