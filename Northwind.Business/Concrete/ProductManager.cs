@@ -1,4 +1,5 @@
 ﻿using Northwind.Business.Abstract;
+using Northwind.Business.BusinessAspects;
 using Northwind.Business.Constants;
 using Northwind.Business.ValidationRules.FluentValidation;
 using Northwind.Core.Aspects.Autofac.Caching;
@@ -47,6 +48,7 @@ namespace Northwind.Business.Concrete
             return new SuccessDataResult<IList<Product>>(_productDal.GetList().ToList());
         }
 
+        [SecuredOperation("Product.List,Admin")]
         [CacheAspect(Duration: 1)]
         public IDataResult<IList<Product>> GetListByCategoryID(int categoryID)
         {

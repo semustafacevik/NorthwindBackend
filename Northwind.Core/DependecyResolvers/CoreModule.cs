@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Northwind.Core.CrossCuttingConcerns.Caching;
 using Northwind.Core.CrossCuttingConcerns.Caching.Microsoft;
 using Northwind.Core.Utilities.IoC;
@@ -14,6 +15,7 @@ namespace Northwind.Core.DependecyResolvers
         {
             services.AddMemoryCache();
             services.AddSingleton<ICacheManager, MemoryCacheManager>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
     }
 }

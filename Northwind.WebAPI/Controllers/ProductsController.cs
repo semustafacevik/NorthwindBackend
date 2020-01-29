@@ -33,7 +33,6 @@ namespace Northwind.WebAPI.Controllers
         }
 
         [HttpGet("getlist")]
-        [Authorize(Roles = "Product.List")]
         public IActionResult GetList()
         {
             var result = _productService.GetList();
