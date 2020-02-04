@@ -5,6 +5,7 @@ using Northwind.Core.CrossCuttingConcerns.Caching.Microsoft;
 using Northwind.Core.Utilities.IoC;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Northwind.Core.DependecyResolvers
@@ -16,6 +17,7 @@ namespace Northwind.Core.DependecyResolvers
             services.AddMemoryCache();
             services.AddSingleton<ICacheManager, MemoryCacheManager>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<Stopwatch>();
         }
     }
 }

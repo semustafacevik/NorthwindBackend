@@ -3,6 +3,7 @@ using Northwind.Business.BusinessAspects;
 using Northwind.Business.Constants;
 using Northwind.Business.ValidationRules.FluentValidation;
 using Northwind.Core.Aspects.Autofac.Caching;
+using Northwind.Core.Aspects.Autofac.Performance;
 using Northwind.Core.Aspects.Autofac.Validation;
 using Northwind.Core.Utilities.Results;
 using Northwind.DataAccess.Abstract;
@@ -43,8 +44,10 @@ namespace Northwind.Business.Concrete
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductID == productID));
         }
 
+        [PerformanceAspect(3)]
         public IDataResult<IList<Product>> GetList()
         {
+            System.Threading.Thread.Sleep(3000);
             return new SuccessDataResult<IList<Product>>(_productDal.GetList().ToList());
         }
 
